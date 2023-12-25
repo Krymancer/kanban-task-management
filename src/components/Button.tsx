@@ -9,7 +9,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 export default function Button(props: ButtonProps) {
-  const baseClass = 'flex items-center justify-center rounded-[24px] transition-all pt-2 pb-[9px] min-w-[300px] font-bold';
+  const baseClass = 'flex items-center justify-center rounded-[24px] transition-all pt-2 pb-[9px] w-full font-bold';
   const primaryClass = 'text-white bg-main-purple hover:bg-main-purple-hover';
   const secondaryClass = 'text-main-purple bg-main-purple/10 hover:bg-main-purple/25 dark:bg-white dark:hover:bg-white/75';
   const dangerClass = 'text-white bg-red hover:bg-red-hover';
@@ -24,10 +24,10 @@ export default function Button(props: ButtonProps) {
   }
 
   const variant = getVariant();
-  const buttonClass = `${baseClass} ${variant === 'primary' ? primaryClass : variant === 'secondary' ? secondaryClass : dangerClass} ${props.large ? 'text-[15px]' : 'text-[13px]'}`;
+  const buttonClass = `${baseClass} ${variant === 'primary' ? primaryClass : variant === 'secondary' ? secondaryClass : dangerClass} ${props.large ? 'text-[15px]' : 'text-[13px]'} ${props.className}`;
 
   return(
-    <button className={buttonClass}>
+    <button className={buttonClass} onClick={props.onClick}>
       {props.children}
     </button>
   )

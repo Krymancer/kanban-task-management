@@ -14,6 +14,7 @@ const config: Config = {
       display: 'Plus Jakarta Sans',      
     },
     colors: {
+      'transparent': 'transparent',
       'main-purple': '#635FC7',
       'main-purple-hover': '#A8A4FF',
       'black': '#000112',
