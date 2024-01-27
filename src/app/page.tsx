@@ -37,8 +37,8 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center dark:bg-dark-gray bg-white gap-10">
-      <ThemeToggle />
       <div className="w-[400px] flex flex-col gap-6">
+      <ThemeToggle />
       <Button onClick={handleClick}>Primary</Button>
       <Button secondary onClick={handleClick}>Secondary</Button>
       <Button danger onClick={handleClick}>Danger</Button>

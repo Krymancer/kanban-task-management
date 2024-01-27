@@ -1,6 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
+
+import { Switch } from "@/components/ui/switch"
+
+import DarkThemeIcon from '@/assets/icon-dark-theme.svg';
+import LightThemeIcon from '@/assets/icon-light-theme.svg';
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState('light');
@@ -23,10 +29,18 @@ const ThemeToggle = () => {
 
   return (
     <button
-      className={`p-2 rounded-md ${theme === 'light' ? 'bg-light text-dark' : 'bg-dark text-light'}`}
+      className={`p-2 rounded-md w-full flex justify-center-center ${theme === 'light' ? 'bg-light text-dark' : 'bg-dark text-light'}`}
       onClick={toggleTheme}
     >
-      {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+      <div className='bg-light-gray dark:bg-very-dark-gray flex  gap-2 py-3 w-full justify-center rounded-md'>
+        <div className='relative h-6 w-6'>
+          <Image src={LightThemeIcon} fill alt='' />
+        </div>
+        <Switch checked={theme === 'light' } onCheckedChange={toggleTheme} />
+        <div className='relative w-6 h-6'>
+          <Image src={DarkThemeIcon} fill alt='' />
+        </div>
+      </div>
     </button>
   );
 };
