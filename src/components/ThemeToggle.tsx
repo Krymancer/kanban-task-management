@@ -36,7 +36,7 @@ const ThemeToggle = () => {
         <div className='relative h-6 w-6'>
           <Image src={LightThemeIcon} fill alt='' />
         </div>
-        <Switch checked={theme === 'light' } onCheckedChange={toggleTheme} />
+        <Switch checked={theme === 'dark' } onCheckedChange={toggleTheme} />
         <div className='relative w-6 h-6'>
           <Image src={DarkThemeIcon} fill alt='' />
         </div>
