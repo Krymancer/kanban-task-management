@@ -28,7 +28,7 @@ const ThemeToggle = () => {
   }, []);
 
   return (
-    <button
+    <div
       className={`p-2 rounded-md w-full flex justify-center-center ${theme === 'light' ? 'bg-light text-dark' : 'bg-dark text-light'}`}
       onClick={toggleTheme}
     >
@@ -41,7 +41,7 @@ const ThemeToggle = () => {
           <Image src={DarkThemeIcon} fill alt='' />
         </div>
       </div>
-    </button>
+    </div>
   );
 };
 
