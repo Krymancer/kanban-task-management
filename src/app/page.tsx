@@ -12,7 +12,7 @@ import ChevronDownIcon from '@/components/icons/ChevronDownIcon';
 import BoardIcon from '@/components/icons/BoardIcon';
 import VerticalEllipsisIcon from '@/components/icons/VerticalEllipsisIcon';
 
-function SidebarBoardItem({ active} : { active?: boolean }) {
+function SidebarBoardItem({ active }: { active?: boolean }) {
   return (
     <div className='w-full flex justify-start'>
       <div className={`${active ? 'bg-main-purple text-white' : 'text-medium-gray'} rounded-r-[100px] flex items-center gap-3 px-6 py-4 font-bold`} >
@@ -25,44 +25,48 @@ function SidebarBoardItem({ active} : { active?: boolean }) {
 
 function Header() {
   return (
-    <header className='flex justify-between px-4 py-5 items-center dark:bg-dark-gray'>
-      <div className='flex gap-4'>
-        <div>
+    <header className='flex items-center dark:bg-dark-gray border-b border-b-lines-light dark:border-b-lines-dark relative'>
+      <div className='flex flex-col gap-4 px-4 py-5 sm:px-9 sm:py-8 border-r border-r-lines-light dark:border-r-lines-dark'>
+        <div className='h-full'>
           <LogoLight className='hidden dark:sm:block' />
           <LogoDark className='hidden sm:block dark:hidden' />
           <LogoMobile className='block sm:hidden' />
-          {/* <Image src={LogoLight} width={152.53} height={25.22} alt='' className='' /> */}
-          {/* <Image src={LogoDark} width={152.53} height={25.22} alt='' className='' /> */}
-          {/* <Image src={LogoMobile} width={24} height={25} alt='' className='block sm:hidden' /> */}
         </div>
 
-        <div className='hidden sm:block text-2xl font-bold'>Platform Launch</div>
-
-        <Dialog >
-          <DialogTrigger className='text-lg font-bold flex gap-2 items-center dark:text-white sm:hidden'>
-              Platform Launch
-              <ChevronDownIcon />              
-          </DialogTrigger>
-          <DialogContent className='w-[264px] rounded-lg p-0 border-none flex flex-col gap-0'>
-            <div className='px-6 py-4 font-bold text-medium-gray text-[12px] tracking-[2.4px]'>ALL BOARDS (3)</div>
-            <div>
-              <SidebarBoardItem active />
-              <SidebarBoardItem />
-              <SidebarBoardItem />
-            </div>
-            <div className='p-4'>
-              <ThemeToggle />
-            </div>
-          </DialogContent>
-        </Dialog>
-
+        <div className='absolute left-0 top-full border-t border-t-white border-r border-r-lines-light bg-white w-[226px]'>
+          sidebar
+        </div>
       </div>
 
-      <div className='flex gap-4 items-center'>
-        <Button className='min-w-12 w-12' onClick={() => { }}>
-          +
-        </Button>
-        <VerticalEllipsisIcon />
+      <div className='flex justify-between w-full pr-4'>
+        <div className=''>
+          <div className='hidden sm:block text-2xl font-bold'>Platform Launch</div>
+
+          <Dialog >
+            <DialogTrigger className='text-lg font-bold flex gap-2 items-center dark:text-white sm:hidden'>
+              Platform Launch
+              <ChevronDownIcon />
+            </DialogTrigger>
+            <DialogContent className='w-[264px] rounded-lg p-0 border-none flex flex-col gap-0'>
+              <div className='px-6 py-4 font-bold text-medium-gray text-[12px] tracking-[2.4px]'>ALL BOARDS (3)</div>
+              <div>
+                <SidebarBoardItem active />
+                <SidebarBoardItem />
+                <SidebarBoardItem />
+              </div>
+              <div className='p-4'>
+                <ThemeToggle />
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+
+        <div className='flex gap-4 items-center border border-green-300'>
+          <Button className='min-w-12 w-12' onClick={() => { }}>
+            +
+          </Button>
+          <VerticalEllipsisIcon />
+        </div>
       </div>
     </header>
   )
