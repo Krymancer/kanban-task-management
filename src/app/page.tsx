@@ -11,11 +11,12 @@ import LogoDark from '@/components/logos/LogoDark';
 import ChevronDownIcon from '@/components/icons/ChevronDownIcon';
 import BoardIcon from '@/components/icons/BoardIcon';
 import VerticalEllipsisIcon from '@/components/icons/VerticalEllipsisIcon';
+import HideSidebarIcon from '@/components/icons/HideSidebarIcon';
 
 function SidebarBoardItem({ active }: { active?: boolean }) {
   return (
     <div className='w-full flex justify-start'>
-      <div className={`${active ? 'bg-main-purple text-white' : 'text-medium-gray'} rounded-r-[100px] flex items-center gap-3 px-6 py-4 font-bold`} >
+      <div className={`${active ? 'bg-main-purple text-white' : 'text-medium-gray'} rounded-r-[100px] flex items-center gap-3 px-6 py-4 font-bold max-h-12`} >
         <BoardIcon />
         Platform Launch
       </div>
@@ -25,7 +26,7 @@ function SidebarBoardItem({ active }: { active?: boolean }) {
 
 function Header() {
   return (
-    <header className='flex items-center dark:bg-dark-gray border-b border-b-lines-light dark:border-b-lines-dark relative'>
+    <header className='flex items-center dark:bg-dark-gray border-b border-b-lines-light dark:border-b-lines-dark'>
       <div className='flex flex-col gap-4 px-4 py-5 sm:px-9 sm:py-8 border-r border-r-lines-light dark:border-r-lines-dark'>
         <div className='h-full'>
           <LogoLight className='hidden dark:sm:block' />
@@ -33,8 +34,19 @@ function Header() {
           <LogoMobile className='block sm:hidden' />
         </div>
 
-        <div className='absolute left-0 top-full border-t border-t-white border-r border-r-lines-light bg-white w-[226px]'>
-          sidebar
+        <div className='absolute inset-0 top-20 flex flex-col justify-between  border-t border-t-white border-r border-r-lines-light bg-white dark:bg-dark-gray dark:border-r-lines-dark dark:border-t-dark-gray w-[226px]'>
+          <div>
+          <div className='px-6 py-4 font-bold text-medium-gray text-[12px] tracking-[2.4px]'>ALL BOARDS (3)</div>
+              <div>
+                <SidebarBoardItem active />
+                <SidebarBoardItem />
+                <SidebarBoardItem />
+              </div>
+          </div>
+          <div>
+          <ThemeToggle />
+          <div className='flex gap-4 text-medium-gray items-center px-8 cursor-pointer'><HideSidebarIcon /> Hide SidebarT</div>
+          </div>
         </div>
       </div>
 
@@ -61,7 +73,7 @@ function Header() {
           </Dialog>
         </div>
 
-        <div className='flex gap-4 items-center border border-green-300'>
+        <div className='flex gap-4 items-center'>
           <Button className='min-w-12 w-12' onClick={() => { }}>
             +
           </Button>
@@ -84,7 +96,7 @@ function Columns() {
 export default function Home() {
 
   return (
-    <main className='h-full min-h-screen flex flex-col'>
+    <main className='h-full min-h-screen flex flex-col overflow-hidden'>
       <Header />
       <div className='bg-light-gray flex flex-col flex-auto items-center justify-center dark:bg-very-dark-gray'>
         <Columns />
