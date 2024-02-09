@@ -26,13 +26,16 @@ export default function Header() {
 
       <div className='flex justify-between w-full pr-4'>
         <div className='flex items-center'>
-          <div className='hidden sm:block text-2xl font-bold'>Platform Launch</div>
+          <div className='hidden sm:block text-2xl font-bold sm:pl-6 dark:text-white'>Platform Launch</div>
           <SidebarMobilePopUp />
         </div>
 
         <div className='flex gap-4 items-center'>
-          <Button className='min-w-12 w-12' onClick={() => { }}>
+          <Button className='min-w-12 w-12 sm:hidden' onClick={() => { }}>
             +
+          </Button>
+          <Button className='hidden min-w-40 w-40 sm:flex' large onClick={() => { }}>
+            + Add New Task
           </Button>
           <VerticalEllipsisIcon />
         </div>
