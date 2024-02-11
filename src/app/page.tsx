@@ -3,6 +3,8 @@
 import Button from '@/components/Button';
 import Header from '@/components/Header';
 
+import data from '@/utils/data.json';
+
 function Columns() {
   return (
     <section className='flex flex-col items-center justify-center gap-6 px-4'>
@@ -13,6 +15,8 @@ function Columns() {
 }
 
 export default function Home() {
+
+  console.log(data);
 
   return (
     <main className='h-full min-h-screen flex flex-col overflow-hidden'>

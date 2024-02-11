@@ -1,15 +1,15 @@
-import { HTMLAttributes, useState } from "react";
+import { ComponentProps, useState } from "react";
 
-interface DropDownItem {
+type DropDownItem = {
   value: string;
   label: string;
-}
+};
 
-interface DropdownProps extends Omit<HTMLAttributes<HTMLSelectElement>, 'onChange'> {
+type DropdownProps = ComponentProps<'select'> & {
   items: DropDownItem[];
   selected: DropDownItem;
   onChange: (item: DropDownItem) => void;
-}
+};
 
 export default function Dropdown(props: DropdownProps) {
   const [isOpened, setIsOpened] = useState(false);
