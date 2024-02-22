@@ -5,7 +5,7 @@ import VerticalEllipsisIcon from '@/components/icons/VerticalEllipsisIcon';
 import Sidebar from '@/components/Sidebar';
 import SidebarMobilePopUp from '@/components/SidebarMobilePopUp';
 import Button from './Button';
-import { useData } from '@/hooks/useData';
+import { useSelectedBoard } from '@/hooks/useSelectedBoard';
 
 function Logo() {
   return(
@@ -18,7 +18,7 @@ function Logo() {
 }
 
 export default function Header() {
-  const {data, setData} = useData();
+  const {selected} = useSelectedBoard();
 
   return (
     <header className='flex items-center dark:bg-dark-gray border-b border-b-lines-light dark:border-b-lines-dark'>
@@ -29,7 +29,7 @@ export default function Header() {
 
       <div className='flex justify-between w-full pr-4'>
         <div className='flex items-center'>
-          <div className='hidden sm:block text-2xl font-bold sm:pl-6 dark:text-white'>{data.boards[0].name}</div>
+          <div className='hidden sm:block text-2xl font-bold sm:pl-6 dark:text-white'>{selected}</div>
           <SidebarMobilePopUp />
         </div>
 
