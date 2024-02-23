@@ -2,7 +2,6 @@ import LogoLight from '@/components/logos/LogoLight';
 import LogoMobile from '@/components/logos/LogoMobile';
 import LogoDark from '@/components/logos/LogoDark';
 import VerticalEllipsisIcon from '@/components/icons/VerticalEllipsisIcon';
-import Sidebar from '@/components/Sidebar';
 import SidebarMobilePopUp from '@/components/SidebarMobilePopUp';
 import Button from './Button';
 import { useSelectedBoard } from '@/hooks/useSelectedBoard';
@@ -24,7 +23,6 @@ export default function Header() {
     <header className='flex items-center dark:bg-dark-gray border-b border-b-lines-light dark:border-b-lines-dark'>
       <div className='flex flex-col gap-4 px-4 py-5 sm:px-9 sm:py-8 sm:border-r border-r-lines-light dark:border-r-lines-dark'>
         <Logo />
-        <Sidebar />
       </div>
 
       <div className='flex justify-between w-full pr-4'>

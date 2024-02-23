@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import BoardsContextProvider from "@/hooks/useBoards";
 import SelectedBoardContextProvider from '@/hooks/useSelectedBoard';
+import SidebarStatusContextProvider from '@/hooks/useSidebarStatus';
 
 export const metadata: Metadata = {
   title: 'Kanban task management',
@@ -18,7 +19,9 @@ export default function RootLayout({
       <body className='dark:bg-dark-gray'>
         <BoardsContextProvider>
           <SelectedBoardContextProvider>
-          {children}
+            <SidebarStatusContextProvider>
+              {children}
+            </SidebarStatusContextProvider>
           </SelectedBoardContextProvider>
         </BoardsContextProvider>
         </body>
