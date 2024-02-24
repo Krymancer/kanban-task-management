@@ -22,7 +22,7 @@ export default function Sidebar() {
           }
         </div>
       </div>
-      <div>
+      <div className="flex flex-col pb-6 gap-2">
         <ThemeToggle />
         <div className='flex gap-4 text-medium-gray items-center px-8 cursor-pointer' onClick={() => setSidebarOpen(false)}>
           <HideSidebarIcon /> Hide Sidebar
