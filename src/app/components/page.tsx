@@ -35,7 +35,7 @@ export default function ComponentsPage() {
             <Checkbox id="checkbox" />
             <label htmlFor="checkbox" className="text-xs font-bold peer-data-[state=checked]:line-through">Checkbox</label>
           </div>
-          <Input />
+          <Input value={value} onChange={(e) => setValue(e.target.value)} />
           <Select>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select..." />
