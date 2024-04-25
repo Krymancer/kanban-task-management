@@ -1,7 +1,8 @@
 'use client';
-import Header from '@/components/Header';
-import Columns from '@/components/Columns';
-import Sidebar from '@/components/Sidebar';
+
+import { Header } from '@/components/header';
+import { Columns } from '@/components/columns';
+import { Sidebar } from '@/components/sidebar/desktop';
 
 export default function Home() {
   return (

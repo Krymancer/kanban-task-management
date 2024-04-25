@@ -1,23 +1,22 @@
-import LogoLight from '@/components/logos/LogoLight';
-import LogoMobile from '@/components/logos/LogoMobile';
-import LogoDark from '@/components/logos/LogoDark';
-import VerticalEllipsisIcon from '@/components/icons/VerticalEllipsisIcon';
-import SidebarMobilePopUp from '@/components/SidebarMobilePopUp';
-import Button from './Button';
+import { LogoLight, LogoDark, LogoMobile } from "@/components/logos";
+
+import { SidebarPopup } from '@/components/sidebar/popup';
 import { useSelectedBoard } from '@/hooks/useSelectedBoard';
+import { Button } from './ui/button';
+import { VerticalEllipses } from '@/components/icons';
 
 function Logo() {
-  return(
+  return (
     <div className='h-full'>
-    <LogoLight className='hidden dark:sm:block' />
-    <LogoDark className='hidden sm:block dark:hidden' />
-    <LogoMobile className='block sm:hidden' />
-  </div>
+      <LogoLight className='hidden dark:sm:block' />
+      <LogoDark className='hidden sm:block dark:hidden' />
+      <LogoMobile className='block sm:hidden' />
+    </div>
   )
 }
 
-export default function Header() {
-  const {selected} = useSelectedBoard();
+export function Header() {
+  const { selected } = useSelectedBoard();
 
   return (
     <header className='flex items-center dark:bg-dark-gray border-b border-b-lines-light dark:border-b-lines-dark'>
@@ -28,17 +27,17 @@ export default function Header() {
       <div className='flex justify-between w-full pr-4'>
         <div className='flex items-center'>
           <div className='hidden sm:block text-2xl font-bold sm:pl-6 dark:text-white'>{selected}</div>
-          <SidebarMobilePopUp />
+          <SidebarPopup />
         </div>
 
         <div className='flex gap-4 items-center'>
           <Button className='min-w-12 w-12 sm:hidden' onClick={() => { }}>
             +
           </Button>
-          <Button className='hidden min-w-40 w-40 sm:flex' large onClick={() => { }}>
+          <Button className='hidden min-w-40 w-40 sm:flex' size="lg" onClick={() => { }}>
             + Add New Task
           </Button>
-          <VerticalEllipsisIcon />
+          <VerticalEllipses />
         </div>
       </div>
     </header>

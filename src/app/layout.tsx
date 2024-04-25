@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
-import './globals.css'
+
+import { ThemeProvider } from 'next-themes'
+
 import BoardsContextProvider from "@/hooks/useBoards";
 import SelectedBoardContextProvider from '@/hooks/useSelectedBoard';
 import SidebarStatusContextProvider from '@/hooks/useSidebarStatus';
+
+import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Kanban task management',
@@ -15,16 +19,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className='dark:bg-dark-gray'>
-        <BoardsContextProvider>
-          <SelectedBoardContextProvider>
-            <SidebarStatusContextProvider>
-              {children}
-            </SidebarStatusContextProvider>
-          </SelectedBoardContextProvider>
-        </BoardsContextProvider>
-        </body>
+        <ThemeProvider storageKey='theme' defaultTheme='system' enableSystem attribute='class' >
+          <BoardsContextProvider>
+            <SelectedBoardContextProvider>
+              <SidebarStatusContextProvider>
+                {children}
+              </SidebarStatusContextProvider>
+            </SelectedBoardContextProvider>
+          </BoardsContextProvider>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

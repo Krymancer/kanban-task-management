@@ -21,7 +21,7 @@ const config = {
       fontFamily: {
         default: 'Plus Jakarta Sans',
         body: 'Plus Jakarta Sans',
-        display: 'Plus Jakarta Sans',      
+        display: 'Plus Jakarta Sans',
       },
       colors: {
         'transparent': 'transparent',
@@ -36,7 +36,7 @@ const config = {
         'light-gray': '#F4F7FD',
         'white': '#FFFFFF',
         'red': '#EA5555',
-        'red-hover': '#FF9898', 
+        'red-hover': '#FF9898',
       },
       keyframes: {
         "accordion-down": {
