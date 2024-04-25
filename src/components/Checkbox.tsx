@@ -1,18 +1,15 @@
 'use client';
 
-import React, { ChangeEvent } from "react";
+import { CheckboxProps } from "@radix-ui/react-checkbox";
+import { Checkbox } from "./ui/checkbox";
 
-interface CheckboxProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  checked?: boolean;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  label: string;
-}
+type Props = { label: string; } & CheckboxProps
 
-export default function Checkbox(props: CheckboxProps) {
+export function CheckboxContainer(props: Props) {
   return (
-    <div className={`flex items-center justify-start gap-4 bg-light-gray hover:bg-main-purple/25 dark:bg-very-dark-gray p-3 rounded-[4px] w-full ${props.className}`}>
-      <input type="checkbox" checked={props.checked} onChange={props.onChange} className="accent-main-purple" />
-      <label className={`font-bold text-[12px] ${props.checked ? 'line-through text-black opacity-50 dark:text-white' : 'text-black dark:text-white'}`}>{props.label}</label>
+    <div className="flex gap-4 items-center bg-light-gray dark:bg-very-dark-gray h-10 p-3 rounded-md hover:bg-main-purple-hover/25 dark:hover:bg-main-purple-hover/25">
+      <Checkbox id={props.id} onCheckedChange={props.onCheckedChange} value={props.value} />
+      <label htmlFor={props.id} className="text-xs font-bold peer-data-[state=checked]:line-through">{props.label}</label>
     </div>
   );
 }
