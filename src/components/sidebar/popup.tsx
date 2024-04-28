@@ -20,7 +20,7 @@ export function SidebarPopup() {
         <div>
           {
             boards.boards.map((board, index) => (
-              <SidebarBoardItem key={index} name={board.name} active={board.name === selected} />
+              <SidebarBoardItem key={index} board={board} active={board.name === selected.name} />
             ))
           }
         </div>
