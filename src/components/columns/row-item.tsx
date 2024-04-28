@@ -1,9 +1,11 @@
+"use client";
+
 import { Task } from "@/types/board";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { DialogHeader, DialogTrigger, Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-import { CheckboxContainer } from "@/components/checkbox";
+import { CheckboxContainer } from "@/components/checkbox-container";
 import { VerticalEllipses } from "../icons";
 
 
