@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 interface TextFieldProps extends Omit<React.HTMLAttributes<HTMLLabelElement>, 'onChange'> {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   value: string;
-  label: string;
   placeholder?: string;
 }
 

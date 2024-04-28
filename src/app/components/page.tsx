@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { useState } from "react";
 
 import { TextField } from "@/components/text-field";
+import { CheckboxContainer } from "@/components/checkbox";
 
 export default function ComponentsPage() {
   const [checked, setChecked] = useState(false);
@@ -24,10 +25,7 @@ export default function ComponentsPage() {
       <ThemeToggle />
       <div className="min-h-screen flex items-center justify-center gap-10 p-40">
         <div className="flex flex-col space-y-4 w-full">
-          <div className="flex gap-4 items-center bg-light-gray dark:bg-very-dark-gray h-10 p-3 rounded-md hover:bg-main-purple-hover/25 dark:hover:bg-main-purple-hover/25">
-            <Checkbox id="checkbox" />
-            <label htmlFor="checkbox" className="text-xs font-bold peer-data-[state=checked]:line-through">Checkbox</label>
-          </div>
+          <CheckboxContainer label="Checkbox" id="checkbox" />
           <TextField value={value} onChange={(e) => setValue(e.target.value)} label="Fodase" placeholder="teste 123" />
           <Select>
             <SelectTrigger className="w-full">

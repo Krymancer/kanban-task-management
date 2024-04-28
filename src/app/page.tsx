@@ -3,6 +3,10 @@
 import { Header } from '@/components/header';
 import { Columns } from '@/components/columns';
 import { Sidebar } from '@/components/sidebar/desktop';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogTitle, DialogTrigger, DialogContent, DialogHeader, DialogDescription, DialogFooter } from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 export default function Home() {
   return (

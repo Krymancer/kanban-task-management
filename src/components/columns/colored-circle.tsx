@@ -1,4 +1,17 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 export function ColoredCircle() {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) return null;
+
+
   const colors = 3;
   const randomColor = Math.floor(Math.random() * colors);
 
