@@ -4,6 +4,7 @@ import { useSelectedBoard } from '@/hooks/useSelectedBoard';
 import { ChevronDownIcon } from "@/components/icons";
 import { SidebarBoardItem } from '@/components/sidebar/sidebar-board-item';
 import { ThemeToggle } from '@/components/theme-toogle';
+import { SidebarAddNewBoard } from './sidebar-add-new-board';
 
 export function SidebarPopup() {
   const { boards } = useBoards();
@@ -23,6 +24,7 @@ export function SidebarPopup() {
               <SidebarBoardItem key={index} board={board} active={board.name === selected.name} />
             ))
           }
+          <SidebarAddNewBoard />
         </div>
         <div className='p-4'>
           <ThemeToggle />

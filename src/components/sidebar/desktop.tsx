@@ -9,6 +9,7 @@ import { ThemeToggle } from "@/components/theme-toogle";
 
 import { HideSidebarIcon, ShowSidebarIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
+import { SidebarAddNewBoard } from "./sidebar-add-new-board";
 
 export function Sidebar() {
   const { boards } = useBoards();
@@ -32,7 +33,7 @@ export function Sidebar() {
       </div>
       <div className={cn(
         "transition-all hidden sm:flex flex-col justify-between border-t border-t-white border-r border-r-lines-light bg-white dark:bg-dark-gray dark:border-r-lines-dark dark:border-t-dark-gray min-w-[300px] w-[300px] h-full",
-        !isSidebarOpen && "hidden translate-x-[-300px] w-0 overflow-hidden"
+        !isSidebarOpen && "w-0 min-w-0 overflow-hidden"
       )}>
         <div>
           <div className='px-6 py-4 font-bold text-medium-gray text-[12px] tracking-[2.4px]'>ALL BOARDS ({boards.boards.length})</div>
@@ -42,7 +43,7 @@ export function Sidebar() {
                 <SidebarBoardItem key={index} board={board} active={board.name === selected.name} />
               ))
             }
-            {/* < SidebarBoardItem name="+ Create New Board" /> */}
+            <SidebarAddNewBoard />
           </div>
         </div>
         <div className="flex flex-col pb-6 px-6 gap-2">
@@ -55,3 +56,5 @@ export function Sidebar() {
     </>
   );
 }
+
+

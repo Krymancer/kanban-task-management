@@ -19,7 +19,7 @@ export function RowItem({ title, description, status, subtasks }: RowItemProps) 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Card className="max-w-64">
+        <Card className="max-w-64 cursor-pointer">
           <CardHeader className="pb-2">
             <CardTitle>{title}</CardTitle>
           </CardHeader>
