@@ -1,9 +1,8 @@
-import { useSelectedBoard } from "@/hooks/useSelectedBoard";
-
 import { cn } from "@/lib/utils";
 
 import { BoardIcon } from "@/components/icons";
 import { Board } from "@/types/board";
+import { useBoardStore } from "@/store/useBoardStore";
 
 type SidebarBoardItemProps = {
   board: Board;
@@ -11,7 +10,7 @@ type SidebarBoardItemProps = {
 };
 
 export function SidebarBoardItem({ board, active }: SidebarBoardItemProps) {
-  const { setSelected } = useSelectedBoard();
+  const { setSelected } = useBoardStore();
 
   return (
     <div className='w-full flex justify-start select-none cursor-pointer' onClick={() => setSelected(board)}>

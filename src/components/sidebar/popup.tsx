@@ -1,14 +1,12 @@
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
-import { useBoards } from '@/hooks/useBoards';
-import { useSelectedBoard } from '@/hooks/useSelectedBoard';
 import { ChevronDownIcon } from "@/components/icons";
 import { SidebarBoardItem } from '@/components/sidebar/sidebar-board-item';
 import { ThemeToggle } from '@/components/theme-toogle';
 import { SidebarAddNewBoard } from './sidebar-add-new-board';
+import { useBoardStore } from '@/store/useBoardStore';
 
 export function SidebarPopup() {
-  const { boards } = useBoards();
-  const { selected } = useSelectedBoard();
+  const { boards, selected } = useBoardStore();
 
   return (
     <Dialog >
@@ -20,7 +18,7 @@ export function SidebarPopup() {
         <div className='px-6 py-4 font-bold text-medium-gray text-[12px] tracking-[2.4px]'>ALL BOARDS (3)</div>
         <div>
           {
-            boards.boards.map((board, index) => (
+            boards.map((board, index) => (
               <SidebarBoardItem key={index} board={board} active={board.name === selected.name} />
             ))
           }

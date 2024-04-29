@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useBoards } from "@/hooks/useBoards";
-import { useSelectedBoard } from "@/hooks/useSelectedBoard";
 
 import { SidebarBoardItem } from "@/components/sidebar/sidebar-board-item";
 import { ThemeToggle } from "@/components/theme-toogle";
@@ -10,10 +8,10 @@ import { ThemeToggle } from "@/components/theme-toogle";
 import { HideSidebarIcon, ShowSidebarIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { SidebarAddNewBoard } from "./sidebar-add-new-board";
+import { useBoardStore } from "@/store/useBoardStore";
 
 export function Sidebar() {
-  const { boards } = useBoards();
-  const { selected } = useSelectedBoard();
+  const { boards, selected } = useBoardStore();
 
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
@@ -36,10 +34,10 @@ export function Sidebar() {
         !isSidebarOpen && "w-0 min-w-0 overflow-hidden"
       )}>
         <div>
-          <div className='px-6 py-4 font-bold text-medium-gray text-[12px] tracking-[2.4px]'>ALL BOARDS ({boards.boards.length})</div>
+          <div className='px-6 py-4 font-bold text-medium-gray text-[12px] tracking-[2.4px]'>ALL BOARDS ({boards.length})</div>
           <div>
             {
-              boards.boards.map((board, index) => (
+              boards.map((board, index) => (
                 <SidebarBoardItem key={index} board={board} active={board.name === selected.name} />
               ))
             }

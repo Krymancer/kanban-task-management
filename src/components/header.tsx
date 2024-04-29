@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 import { LogoLight, LogoDark, LogoMobile } from "@/components/logos";
 import { SidebarPopup } from '@/components/sidebar/popup';
-import { useSelectedBoard } from '@/hooks/useSelectedBoard';
 import { Button } from '@/components/ui/button';
 import { CrossIcon, VerticalEllipses } from '@/components/icons';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -13,6 +12,7 @@ import { TextField } from "@/components/text-field";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Subtask, Task } from "@/types/board";
+import { useBoardStore } from "@/store/useBoardStore";
 
 function Logo() {
   return (
@@ -25,7 +25,7 @@ function Logo() {
 }
 
 export function Header() {
-  const { selected } = useSelectedBoard();
+  const { selected } = useBoardStore();
 
   const [isClient, setIsClient] = useState(false)
 
@@ -52,7 +52,7 @@ export function Header() {
 }
 
 function CreateNewTask() {
-  const { selected } = useSelectedBoard();
+  const { selected } = useBoardStore();
   const [currentSubtasks, setCurrentSubtasks] = useState<Subtask[]>([{ title: "", isCompleted: false }]);
 
   function addNewSubtask() {

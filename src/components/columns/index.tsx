@@ -1,12 +1,11 @@
-import { useBoards } from '@/hooks/useBoards';
-import { useSelectedBoard } from '@/hooks/useSelectedBoard';
 import { Button } from '@/components/ui/button';
 
 import { AddNewColumn } from '@/components/columns/add-new-column';
 import { Column } from '@/components/columns/column';
+import { useBoardStore } from '@/store/useBoardStore';
 
 export function Columns() {
-  const { selected } = useSelectedBoard();
+  const { selected } = useBoardStore();
 
   if (!selected.columns?.length) {
     return (
