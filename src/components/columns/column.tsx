@@ -13,7 +13,7 @@ export function Column({ name, tasks }: ColumnProps) {
       </div>
       <div className='flex flex-col gap-4 justify-start'>
         {
-          tasks.map((task, index) => (<RowItem key={index} {...task} />))
+          tasks.map((task, index) => (<RowItem key={index} {...task} status={task.status} />))
         }
       </div>
     </div>

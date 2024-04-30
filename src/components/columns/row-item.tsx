@@ -3,15 +3,19 @@
 import { Task } from "@/types/board";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { DialogHeader, DialogTrigger, Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 import { CheckboxContainer } from "@/components/checkbox-container";
 import { VerticalEllipses } from "../icons";
+import { useBoardStore } from "@/store/useBoardStore";
+import { SelectWrapper } from "../select-wrapper";
 
 
 type RowItemProps = Task;
 
 export function RowItem({ title, description, status, subtasks }: RowItemProps) {
+  const { selected } = useBoardStore();
+
+  const statusOptions = selected.columns.map(column => column.name);
 
   const completedSubtasks = subtasks.filter(subtask => subtask.isCompleted).length;
   const totalSubtasks = subtasks.length;
@@ -47,18 +51,7 @@ export function RowItem({ title, description, status, subtasks }: RowItemProps) 
         </div>
         <div>
           <h3 className="text-black dark:text-white font-bold mb-4">Current status {status}</h3>
-          <Select defaultValue={status} value={status}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select..." defaultValue={status} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectItem value="Todo">Todo</SelectItem>
-                <SelectItem value="Doing">Doing</SelectItem>
-                <SelectItem value="Done">Done</SelectItem>
-              </SelectGroup>
-            </SelectContent>
-          </Select>
+          <SelectWrapper options={statusOptions} value={status.length > 0 ? status : statusOptions[0]} onChange={() => { }} />
         </div>
       </DialogContent>
     </Dialog>

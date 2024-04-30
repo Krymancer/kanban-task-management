@@ -19,7 +19,9 @@ export function Columns() {
   return (
     <section className='flex flex-row gap-6 p-6 overflow-scroll'>
       {
-        selected.columns.map((column, index) => (<Column key={index} name={column.name} tasks={column.tasks} />))
+        selected.columns.map((column, index) => (
+          <Column key={index} name={column.name} tasks={column.tasks} />
+        ))
       }
       <AddNewColumn />
     </section>
