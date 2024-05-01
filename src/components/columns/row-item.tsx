@@ -5,7 +5,7 @@ import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { DialogHeader, DialogTrigger, Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 import { CheckboxContainer } from "@/components/checkbox-container";
-import { VerticalEllipses } from "../icons";
+import { VerticalEllipses } from "@/components/icons";
 import { useBoardStore } from "@/store/useBoardStore";
 import { SelectWrapper } from "../select-wrapper";
 
