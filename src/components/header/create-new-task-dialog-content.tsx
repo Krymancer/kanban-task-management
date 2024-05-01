@@ -21,27 +21,29 @@ export function CreateNewTaskDialogContent() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [subtasks, setSubtasks] = useState<Subtask[]>([{ title: "", isCompleted: false }]);
+  const [subtasks, setSubtasks] = useState<Subtask[]>([{ id: crypto.randomUUID(), title: "", isCompleted: false }]);
   const [status, setStatus] = useState(selected.columns[0].name);
 
   const isCreateButtonDisabled = !title || subtasks.some(subtask => !subtask.title);
   const statusOptions = selected.columns.map(column => column.name) || [];
 
   function addNewSubtask() {
-    setSubtasks([...subtasks, { title: "", isCompleted: false }]);
+    setSubtasks([...subtasks, { id: crypto.randomUUID(), title: "", isCompleted: false }]);
   }
 
-  function editSubtask(index: number, title: string) {
-    const updatedSubtasks = subtasks.map((subtask, i) => { return i === index ? { ...subtask, title } : subtask; });
-    setSubtasks(updatedSubtasks);
+  function editSubtask(id: string, title: string) {
+    setSubtasks(subtasks.map(subtask => {
+      return id === subtask.id ? { ...subtask, title } : subtask;
+    }));
   }
 
-  function removeSubtask(index: number) {
-    if (subtasks.length === 1) return setSubtasks([{ title: "", isCompleted: false }]);
-    setSubtasks(subtasks.filter((_, i) => i !== index));
+  function removeSubtask(id: string) {
+    if (subtasks.length === 1) return setSubtasks([{ id: crypto.randomUUID(), title: "", isCompleted: false }]);
+    setSubtasks(subtasks.filter(subtask => subtask.id !== id));
   }
 
   const createTask = () => addNewTask({
+    id: crypto.randomUUID(),
     title,
     description,
     subtasks,
@@ -69,10 +71,10 @@ export function CreateNewTaskDialogContent() {
       <div className="flex flex-col gap-4">
         <Label className="text-xm font-bold">Subtasks</Label>
         <div className="flex flex-col gap-2">
-          {subtasks.map((subtask, index) => (
-            <div className="flex gap-4 items-center" key={index}>
-              <TextField value={subtask.title} placeholder="e.g. Make Coffee" onChange={(e) => editSubtask(index, e.target.value)} />
-              <CrossIcon className="cursor-pointer" onClick={() => removeSubtask(index)} />
+          {subtasks.map(subtask => (
+            <div className="flex gap-4 items-center" key={subtask.id}>
+              <TextField value={subtask.title} placeholder="e.g. Make Coffee" onChange={(e) => editSubtask(subtask.id, e.target.value)} />
+              <CrossIcon className="cursor-pointer" onClick={() => removeSubtask(subtask.id)} />
             </div>
           ))}
           <Button onClick={addNewSubtask} variant="secondary" className="w-full mt-2">+ Add New Subtask</Button>

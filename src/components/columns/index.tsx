@@ -68,8 +68,8 @@ export function Columns() {
     <section className='flex flex-row gap-6 p-6 overflow-scroll'>
       <DragDropContext onDragEnd={onDragEnd}>
         {
-          selected.columns.map((column, index) => (
-            <Column key={index} name={column.name} tasks={column.tasks} />
+          selected.columns.map(column => (
+            <Column key={column.id} {...column} />
           ))
         }
       </DragDropContext>

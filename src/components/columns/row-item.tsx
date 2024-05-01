@@ -46,7 +46,7 @@ export function RowItem({ title, description, status, subtasks }: RowItemProps) 
         <div>
           <h3 className="text-black dark:text-white font-bold mb-4">Subtasks ({completedSubtasks} of {totalSubtasks})</h3>
           <div className="flex flex-col gap-2">
-            {subtasks.map((subtask, index) => (<CheckboxContainer key={index} label={subtask.title} checked={subtask.isCompleted} />))}
+            {subtasks.map(subtask => (<CheckboxContainer key={subtask.id} label={subtask.title} checked={subtask.isCompleted} />))}
           </div>
         </div>
         <div>
