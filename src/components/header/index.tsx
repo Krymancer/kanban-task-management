@@ -5,6 +5,8 @@ import { SidebarPopup } from '@/components/sidebar/popup';
 import { useBoardStore } from "@/store/useBoardStore";
 import { Logo } from "./logo";
 import { CreateNewTaskDialogTrigger } from "./create-new-task-dialog-trigger";
+import { VerticalEllipses } from "../icons";
+import { EllipsesDropdownMenu } from "./ellipses-dropdown-menu";
 
 export function Header() {
   const { selected } = useBoardStore();
@@ -27,7 +29,10 @@ export function Header() {
           <SidebarPopup />
         </div>
 
-        <CreateNewTaskDialogTrigger />
+        <div className="flex gap-4 items-center">
+          <CreateNewTaskDialogTrigger />
+          <EllipsesDropdownMenu />
+        </div>
       </div>
     </header >
   )

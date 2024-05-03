@@ -21,7 +21,6 @@ export function CreateNewTaskDialogTrigger() {
           <CreateNewTaskDialogContent />
         </DialogContent>
       </Dialog>
-      <VerticalEllipses />
     </div>
   );
 }
