@@ -35,12 +35,11 @@ export function AddNewColumn() {
   return (
     <Dialog>
       <DialogTrigger>
-        <div className='flex flex-1 h-full py-12 rounded-lg'>
-          <div
-            className='cursor-pointer rounded-lg w-64 bg-gradient-to-b from-[#E9EFFA] to-[#E9EFFA]/50 dark:from-dark-gray dark:to-dark-gray/50 dark:opacity-25 flex items-center justify-center'
-          >
-            <p className='text-medium-gray font-bold text-xl'>+ New Column</p>
+        <div className='flex flex-1 h-full py-12 rounded-lg text-medium-gray group hover:text-main-purple-hover relative'>
+          <div className="w-64 cursor-pointer rounded-lg flex items-center justify-center">
+            <p className='font-bold text-xl z-10'>+ New Column</p>
           </div>
+          <div className='z-0 absolute inset-0 top-12 cursor-pointer rounded-lg bg-gradient-to-b from-[#E9EFFA] to-[#E9EFFA]/50 dark:from-dark-gray dark:to-dark-gray/50 dark:opacity-25 flex items-center justify-center' />
         </div>
       </DialogTrigger>
       <DialogContent>

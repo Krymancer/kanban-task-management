@@ -1,5 +1,7 @@
 "use client";
 
+import { produce } from "immer";
+
 import { Task } from "@/types/board";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { DialogHeader, DialogTrigger, Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -10,10 +12,10 @@ import { useBoardStore } from "@/store/useBoardStore";
 import { SelectWrapper } from "../select-wrapper";
 
 
-type RowItemProps = Task;
+type RowItemProps = Task & { onSubtaskClick: (subtaskId: string) => void };
 
-export function RowItem({ title, description, status, subtasks }: RowItemProps) {
-  const { selected } = useBoardStore();
+export function RowItem({ id, title, description, status, subtasks, onSubtaskClick }: RowItemProps) {
+  const { selected, boards, setBoards } = useBoardStore();
 
   const statusOptions = selected.columns.map(column => column.name);
 
@@ -46,7 +48,14 @@ export function RowItem({ title, description, status, subtasks }: RowItemProps) 
         <div>
           <h3 className="text-black dark:text-white font-bold mb-4">Subtasks ({completedSubtasks} of {totalSubtasks})</h3>
           <div className="flex flex-col gap-2">
-            {subtasks.map(subtask => (<CheckboxContainer key={subtask.id} label={subtask.title} checked={subtask.isCompleted} />))}
+            {subtasks.map(subtask => (
+              <div key={subtask.id} onClick={() => onSubtaskClick(subtask.id)}>
+                <CheckboxContainer
+                  label={subtask.title}
+                  checked={subtask.isCompleted}
+                />
+              </div>
+            ))}
           </div>
         </div>
         <div>
