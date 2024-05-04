@@ -4,17 +4,36 @@ import { cn } from "@/lib/utils";
 
 import { BoardIcon, CrossIcon } from "@/components/icons";
 
-import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogHeader } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogHeader, DialogClose } from "@/components/ui/dialog";
 import { TextField } from "../text-field";
 import { Label } from "../ui/label";
 import { useState } from "react";
 import { Button } from "../ui/button";
+import { useBoardStore } from "@/store/useBoardStore";
 
 export function SidebarAddNewBoard() {
+  const { setSelected, setBoards, boards } = useBoardStore();
+  const [boardName, setBoardName] = useState('');
   const [columns, setColumns] = useState<string[]>(['']);
 
-  const addColumn = () => {
+  function addColumn() {
     setColumns([...columns, '']);
+  }
+
+  function handleCreateBoard() {
+    const boardColums = columns.map(name => ({
+      id: crypto.randomUUID(),
+      name,
+      tasks: [],
+    }));
+    const newBoard = {
+      id: crypto.randomUUID(),
+      name: boardName,
+      columns: boardColums,
+    }
+    const newBoards = [...boards, newBoard];
+    setBoards(newBoards);
+    setSelected(newBoard);
   }
 
   return (
@@ -39,7 +58,7 @@ export function SidebarAddNewBoard() {
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <Label className="font-bold text-xs">Board Name</Label>
-            <TextField placeholder="e.g. Web Design" value="" onChange={() => { }} />
+            <TextField placeholder="e.g. Web Design" value={boardName} onChange={(e) => setBoardName(e.target.value)} />
           </div>
           <div className="flex flex-col gap-2">
             <Label className="font-bold text-xs">Board Columns</Label>
@@ -67,7 +86,14 @@ export function SidebarAddNewBoard() {
               <Button variant="secondary" onClick={addColumn}>+ Add New Column</Button>
             </div>
           </div>
-          <Button>Create New Board</Button>
+          <DialogClose className="w-full">
+            <Button
+              className="w-full"
+              disabled={!boardName || columns.length === 0 || columns.some(column => column.length === 0)}
+              onClick={handleCreateBoard}
+            >Create New Board
+            </Button>
+          </DialogClose>
         </div>
       </DialogContent>
     </Dialog >
