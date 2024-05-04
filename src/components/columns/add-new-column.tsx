@@ -1,18 +1,35 @@
 "use client";
 
 import { CrossIcon } from "@/components/icons";
-import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogHeader } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogHeader, DialogClose } from "@/components/ui/dialog";
 import { TextField } from "../text-field";
 import { Label } from "../ui/label";
 import { useState } from "react";
 import { Button } from "../ui/button";
+import { Column } from "@/types/board";
+import { useBoardStore } from "@/store/useBoardStore";
 
 
 export function AddNewColumn() {
-  const [columns, setColumns] = useState<string[]>(['']);
+  const { boards, selected, setBoards } = useBoardStore();
+  const [columnName, setColumnName] = useState<string>('');
 
-  const addColumn = () => {
-    setColumns([...columns, '']);
+  function handleCreateColumn() {
+    const newColumn: Column = {
+      id: crypto.randomUUID(),
+      name: columnName,
+      tasks: []
+    }
+
+    const newBoards = boards.map(board => {
+      if (board.id === selected.id) {
+        board.columns.push(newColumn);
+      }
+      return board;
+    });
+
+    setBoards(newBoards);
+
   }
 
   return (
@@ -34,36 +51,12 @@ export function AddNewColumn() {
         </DialogHeader>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-            <Label className="font-bold text-xs">Board Name</Label>
-            <TextField placeholder="e.g. Web Design" value="" onChange={() => { }} />
+            <Label className="font-bold text-xs">Column Name</Label>
+            <TextField placeholder="e.g. Later" value={columnName} onChange={(e) => setColumnName(e.target.value)} />
           </div>
-          <div className="flex flex-col gap-2">
-            <Label className="font-bold text-xs">Board Columns</Label>
-            <div className="flex flex-col gap-3">
-              {columns.map((column, index) => (
-                <div key={index} className="flex gap-4 items-center">
-                  <TextField
-                    key={index}
-                    placeholder="e.g. Todo"
-                    value={column}
-                    onChange={(e) => {
-                      const newColumns = [...columns];
-                      newColumns[index] = e.target.value;
-                      setColumns(newColumns);
-                    }} />
-                  <CrossIcon
-                    className="cursor-pointer"
-                    onClick={() => {
-                      const newColumns = [...columns];
-                      newColumns.splice(index, 1);
-                      setColumns(newColumns);
-                    }} />
-                </div>
-              ))}
-              <Button variant="secondary" onClick={addColumn}>+ Add New Column</Button>
-            </div>
-          </div>
-          <Button>Create New Board</Button>
+          <DialogClose>
+            <Button disabled={columnName?.length === 0} onClick={handleCreateColumn} >Create New Column</Button>
+          </DialogClose>
         </div>
       </DialogContent>
     </Dialog >
