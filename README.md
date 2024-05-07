@@ -1,6 +1,4 @@
-# Frontend Mentor - Kanban task management web app solution
-
-This is a solution to the [Kanban task management web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/kanban-task-management-web-app-wgQLt-HlbB).
+# Kanban task management web app solution
 
 [Click here to see live site](https://kanban-task-management-eight-beta.vercel.app/)
 
@@ -21,11 +19,11 @@ Users should be able to:
 
 ## Screenshots
 
-![Home Screen](./screenshot.jpg)
+![Home Screen](https://github.com/Krymancer/kanban-task-management/blob/main/.github/screenshots/home.png?raw=true)
 
-![Task Overview](./screenshot.jpg)
+![Task Overview](https://github.com/Krymancer/kanban-task-management/blob/main/.github/screenshots/task-overview.png?raw=true)
 
-![Add Task Modal](./screenshot.jpg)
+![Add Task Modal](https://github.com/Krymancer/kanban-task-management/blob/main/.github/screenshots/add-new-task.png?raw=true)
 
 ## My process
 
